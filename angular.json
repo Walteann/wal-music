@@ -12,7 +12,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "wal",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -30,7 +30,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/tailwindcss/base.css",
+              "node_modules/tailwindcss/components.css",
+              "node_modules/tailwindcss/utilities.css"
             ],
             "scripts": []
           },
@@ -97,5 +100,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "c4f02dd0-a88b-4fab-91d2-10693568020e"
   }
 }
