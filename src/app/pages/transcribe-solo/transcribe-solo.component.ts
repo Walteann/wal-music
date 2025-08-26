@@ -4,11 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'wal-transcribe-solo',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './transcribe-solo.component.html',
-  styleUrl: './transcribe-solo.component.scss',
+    selector: 'wal-transcribe-solo',
+    imports: [CommonModule, FormsModule],
+    templateUrl: './transcribe-solo.component.html',
+    styleUrl: './transcribe-solo.component.scss'
 })
 export class TranscribeSoloComponent {
   notes: any = NOTES_GUITAR_NERK;
