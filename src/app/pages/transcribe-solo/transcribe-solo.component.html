@@ -1,6 +1,4 @@
-<!-- Conteúdo principal -->
 <div class="container mx-auto py-8">
-  <!-- Título e formulário -->
   <form
     class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md mb-8"
     (submit)="onSubmit()"
@@ -20,19 +18,42 @@
     </button>
   </form>
 
-  <ng-container *ngFor="let lista of soloEmNotas">
-    <div class="flex justify-center my-10">
-      <ng-container *ngFor="let notas of lista">
+  @if(soloEmNotas.length) {
+    <button class="bg-gray-700 text-white py-2 px-4 rounded-md hover:bg-gray-900" (click)="handlerTabs()">Gerar Tablatura</button>
+  }
+
+  @for(lista of soloEmNotas; track $index ) {
+     <div class="flex justify-center my-10">
+      @for(notas of lista; track $index) {
         <div class="flex flex-wrap w-full justify-center">
-          <ng-container *ngFor="let note of notas">
+          @for(note of notas; track note + '-' + $index) {
             <div class="w-16 min-w-fit  md:min-w-fit px-2 py-2 ">
               <div class="h-16 bg-white flex justify-center items-center rounded-md shadow-md px-2">
                 <span class="text-2xl md:text-3xl  font-semibold text-orange-500">{{ note }}</span>
               </div>
             </div>
-          </ng-container>
+          }
         </div>
-      </ng-container>
-    </div>
-  </ng-container>
+      }
+     </div>
+  }
+  <div class="space-y-6">
+    @if (tablaturas?.length) {
+      @for (tab of tablaturas; track $index) {
+        <div class="p-4 rounded-xl shadow bg-slate-900 text-slate-100">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="text-lg font-semibold">🎸 Tablatura {{ $index + 1 }}</h4>
+          </div>
+          <div class="font-mono text-sm leading-5 tracking-wider">
+            @for (line of tab; track $index) {
+              <pre class="whitespace-pre">{{ line }}</pre>
+            }
+          </div>
+        </div>
+      }
+    } @else {
+      <p class="text-slate-400 italic">Nenhuma tablatura gerada ainda.</p>
+    }
+  </div>
 </div>
+
